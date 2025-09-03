@@ -1,0 +1,7 @@
+TEAM_ID=
+
+PRODUCT_NAME=Taskmanager
+PRODUCT_BUNDLE_IDENTIFIER=com.douglassantana.task_manager.Taskmanager$(TEAM_ID)
+
+CURRENT_PROJECT_VERSION=1
+MARKETING_VERSION=1.0

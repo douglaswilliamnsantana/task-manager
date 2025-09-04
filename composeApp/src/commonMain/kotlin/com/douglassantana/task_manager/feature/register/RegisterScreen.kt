@@ -21,7 +21,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.douglassantana.task_manager.designsystem.components.header.TaskManagerHeaderComponent
+import com.douglassantana.task_manager.designsystem.components.header.TaskManagerHeader
 
 @Composable
 fun RegisterScreen(
@@ -30,7 +30,10 @@ fun RegisterScreen(
     onBackNavigate: () -> Unit,
 ) = Scaffold(
     topBar = {
-        TaskManagerHeaderComponent(onBackNavigate = onBackNavigate)
+        TaskManagerHeader(
+            title = "Register Task",
+            onBackStack = onBackNavigate
+        )
     }
 ) { paddingValues ->
     Box(

@@ -3,6 +3,9 @@ package com.douglassantana.task_manager.designsystem.theme
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import com.douglassantana.task_manager.designsystem.theme.colors.darkColorScheme
+import com.douglassantana.task_manager.designsystem.theme.colors.lightColorScheme
+import com.douglassantana.task_manager.designsystem.theme.typography.TaskManagerTypography
 
 @Composable
 fun TaskManagerTheme(
@@ -16,7 +19,7 @@ fun TaskManagerTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
+        typography = TaskManagerTypography(),
         content = content
     )
 }

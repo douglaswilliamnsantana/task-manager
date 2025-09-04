@@ -9,7 +9,7 @@
 
 ---
 
-## 🚀 Sobre o projeto
+## 🚀 About the project
 
 **Task Manager** is a project built with Kotlin Multiplatform, focused on creating a shared codebase for Android and iOS applications. It uses Jetpack Compose Multiplatform for UI and a modular structure that separates common code (commonMain) from platform specific code (iosMain, jvmMain).
 
@@ -22,7 +22,7 @@
     . Scalable architecture with clear layer separation
     . Perfect for learning or implementing multiplatform architecture with Kotlin
 
-## 📦 Estrutura do projeto
+## 📦 Project structure
 
     task-kmp/ 
         |── composeApp/ # Shared code across platforms |

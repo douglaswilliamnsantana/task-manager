@@ -1,8 +1,6 @@
 package com.douglassantana.task_manager.designsystem.components.header
 
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -11,29 +9,35 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.style.TextAlign
 import com.douglassantana.task_manager.designsystem.theme.TaskManagerTheme
+import com.douglassantana.task_manager.designsystem.theme.size24
+import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import taskmanager.composeapp.generated.resources.Res
+import taskmanager.composeapp.generated.resources.ic_arrow_back
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TaskManagerHeaderComponent(
+fun TaskManagerHeader(
     modifier: Modifier = Modifier,
-    onBackNavigate: (() -> Unit)? = null,
+    title: String,
+    onBackStack: (() -> Unit)? = null
 ) = CenterAlignedTopAppBar(
     modifier = modifier,
     navigationIcon = {
-        if (onBackNavigate != null)
-            IconButton(onClick = { onBackNavigate.invoke() }) {
+        if (onBackStack != null)
+            IconButton(onClick = { onBackStack.invoke() }) {
                 Icon(
-                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = "Localized description"
+                    painter = painterResource(resource = Res.drawable.ic_arrow_back),
+                    contentDescription = "Back Icon",
+                    modifier = Modifier
+                        .size(size = size24)
                 )
             }
     },
     title = {
         Text(
-            text = "Task Manager",
+            text = title,
             style = MaterialTheme.typography.titleSmall,
         )
     }
@@ -43,6 +47,9 @@ fun TaskManagerHeaderComponent(
 @Preview
 private fun TaskHeaderComponentPreview() {
     TaskManagerTheme {
-        TaskManagerHeaderComponent()
+        TaskManagerHeader(
+            title = "Header Title",
+            onBackStack = {}
+        )
     }
 }

@@ -13,17 +13,15 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.douglassantana.task_manager.designsystem.components.header.TaskManagerHeaderComponent
+import com.douglassantana.task_manager.designsystem.components.header.TaskManagerHeader
 import com.douglassantana.task_manager.designsystem.components.list.TaskManagerListComponent
-import com.douglassantana.task_manager.designsystem.theme.TaskManagerTheme
-import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier,
     onNavigationRegister: () -> Unit,
 ) = Scaffold(
-    topBar = { TaskManagerHeaderComponent() },
+    topBar = { TaskManagerHeader(title = "Task Manager") },
     floatingActionButton = {
         ExtendedFloatingActionButton(
             onClick = onNavigationRegister,

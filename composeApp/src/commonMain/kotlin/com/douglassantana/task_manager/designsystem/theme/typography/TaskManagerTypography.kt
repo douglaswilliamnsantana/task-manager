@@ -92,7 +92,7 @@ fun TaskManagerTypography(): Typography {
         ),
         bodyLarge = TextStyle(
             fontFamily = fontFamily,
-            fontWeight = FontWeight.Normal,
+            fontWeight = FontWeight.Bold,
             fontSize = bodyLargeSize,
             lineHeight = bodyLargeLineHeight,
             letterSpacing = 0.5.sp

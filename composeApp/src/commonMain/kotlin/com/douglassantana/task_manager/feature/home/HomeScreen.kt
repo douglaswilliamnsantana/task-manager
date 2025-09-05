@@ -14,7 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.douglassantana.task_manager.designsystem.components.header.TaskManagerHeader
-import com.douglassantana.task_manager.designsystem.components.list.TaskManagerListComponent
+import com.douglassantana.task_manager.designsystem.components.list.TaskManagerList
 
 @Composable
 fun HomeScreen(
@@ -42,7 +42,9 @@ fun HomeScreen(
     ) {
         LazyColumn {
             items(20) {
-                TaskManagerListComponent(
+                TaskManagerList(
+                    taskTitle = "Task $it",
+                    taskSubtitle = "This is the description for task $it",
                     modifier = Modifier
                         .padding(
                             horizontal = 16.dp,

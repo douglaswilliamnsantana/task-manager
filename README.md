@@ -58,7 +58,7 @@ Open the iosApp project in Xcode and run it on a simulator or physical device.
 
 ## Screenshots
 
-| Android                                                                          | iOS                                                    |
-|----------------------------------------------------------------------------------|--------------------------------------------------------|
-| ![Android Screenshot](./composeResources/screenshots/simulator_android_1.webp)   | ![iOS Screenshot](./screenshots/ios_screenshot.png)    |
-| ![Android Screenshot 2](./composeResources/screenshots/simulator_android_2.webp) | ![iOS Screenshot 2](./screenshots/ios_screenshot2.png) |
+| Android                                                         | iOS                                                    |
+|-----------------------------------------------------------------|--------------------------------------------------------|
+| ![Android Screenshot](./screenshots/simulator_android_1.webp)   | ![iOS Screenshot](./screenshots/ios_screenshot.png)    |
+| ![Android Screenshot 2](./screenshots/simulator_android_2.webp) | ![iOS Screenshot 2](./screenshots/ios_screenshot2.png) |

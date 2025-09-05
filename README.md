@@ -60,7 +60,7 @@ Open the iosApp project in Xcode and run it on a simulator or physical device.
 
 ## Android and iOS
 
-![Android Screenshot](./composeApp/src/commonMain/composeResources/screenshots/simulator_android_1.webp)
-![Android Screenshot 2](./composeApp/src/commonMain/composeResources/screenshots/simulator_android_2.webp)
-![iOS Screenshot](./composeApp/src/commonMain/composeResources/screenshots/simulator_ios_1.webp)
-![iOS Screenshot 2](./composeApp/src/commonMain/composeResources/screenshots/simulator_ios_2.webp)
+<img src="./composeApp/src/commonMain/composeResources/screenshots/simulator_android_1.webp" alt="Android Screenshot" width="200"/>
+<img src="./composeApp/src/commonMain/composeResources/screenshots/simulator_android_2.webp" alt="Android Screenshot" width="200"/>
+<img src="./composeApp/src/commonMain/composeResources/screenshots/simulator_ios_1.webp" alt="iOS Screenshot" width="200"/>
+<img src="./composeApp/src/commonMain/composeResources/screenshots/simulator_ios_2.webp" alt="iOS Screenshot" width="200"/>

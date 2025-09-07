@@ -1,0 +1,8 @@
+<resources>
+    <string name="header_title_home">Tasks</string>
+    <string name="btn_title_home">Add Task</string>
+    <string name="header_title_register">Register Task</string>
+    <string name="input_label_register">Task</string>
+    <string name="input_label_subtitle_register">Subtitle</string>
+    <string name="btn_label_register">Save Task</string>
+</resources>

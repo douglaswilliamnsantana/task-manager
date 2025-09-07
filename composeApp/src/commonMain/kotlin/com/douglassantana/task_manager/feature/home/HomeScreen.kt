@@ -12,16 +12,21 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import com.douglassantana.task_manager.designsystem.components.header.TaskManagerHeader
 import com.douglassantana.task_manager.designsystem.components.list.TaskManagerList
+import com.douglassantana.task_manager.designsystem.theme.space16
+import com.douglassantana.task_manager.designsystem.theme.space8
+import org.jetbrains.compose.resources.stringResource
+import taskmanager.composeapp.generated.resources.Res
+import taskmanager.composeapp.generated.resources.btn_title_home
+import taskmanager.composeapp.generated.resources.header_title_home
 
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier,
     onNavigationRegister: () -> Unit,
 ) = Scaffold(
-    topBar = { TaskManagerHeader(title = "Task Manager") },
+    topBar = { TaskManagerHeader(title = stringResource(resource = Res.string.header_title_home)) },
     floatingActionButton = {
         ExtendedFloatingActionButton(
             onClick = onNavigationRegister,
@@ -31,7 +36,7 @@ fun HomeScreen(
                     contentDescription = "Add",
                 )
             },
-            text = { Text(text = "Add Item") }
+            text = { Text(text = stringResource(resource = Res.string.btn_title_home)) }
         )
     }
 ) { paddingValues ->
@@ -47,8 +52,8 @@ fun HomeScreen(
                     taskSubtitle = "This is the description for task $it",
                     modifier = Modifier
                         .padding(
-                            horizontal = 16.dp,
-                            vertical = 8.dp
+                            horizontal = space16,
+                            vertical = space8
                         )
                 )
             }

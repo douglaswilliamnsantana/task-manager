@@ -7,21 +7,29 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import com.douglassantana.task_manager.designsystem.components.header.TaskManagerHeader
+import com.douglassantana.task_manager.designsystem.components.input.TaskManagerInput
+import com.douglassantana.task_manager.designsystem.theme.TaskManagerTheme
+import com.douglassantana.task_manager.designsystem.theme.space16
+import com.douglassantana.task_manager.designsystem.theme.space8
+import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
+import taskmanager.composeapp.generated.resources.Res
+import taskmanager.composeapp.generated.resources.btn_label_register
+import taskmanager.composeapp.generated.resources.header_title_register
+import taskmanager.composeapp.generated.resources.input_label_register
+import taskmanager.composeapp.generated.resources.input_label_subtitle_register
 
 @Composable
 fun RegisterScreen(
@@ -31,7 +39,7 @@ fun RegisterScreen(
 ) = Scaffold(
     topBar = {
         TaskManagerHeader(
-            title = "Register Task",
+            title = stringResource(resource = Res.string.header_title_register),
             onBackStack = onBackNavigate
         )
     }
@@ -51,27 +59,46 @@ fun RegisterScreen(
                 modifier = modifier
                     .fillMaxWidth()
                     .fillMaxHeight()
-                    .padding(horizontal = 16.dp),
+                    .padding(horizontal = space16),
             ) {
                 val text = remember { mutableStateOf("") }
 
-                TextField(
+                TaskManagerInput(
                     modifier = Modifier
-                        .width(width = 230.dp),
+                        .padding(top = space16),
                     value = text.value,
                     onValueChange = { text.value = it },
-                    label = { Text("Enter your name") },
+                    label = stringResource(resource = Res.string.input_label_register)
+                )
+
+                TaskManagerInput(
+                    modifier = Modifier
+                        .padding(top = space16),
+                    value = text.value,
+                    onValueChange = { text.value = it },
+                    label = stringResource(resource = Res.string.input_label_subtitle_register)
                 )
 
                 Button(
                     modifier = Modifier
-                        .width(width = 230.dp)
-                        .padding(top = 16.dp),
-                    shape = RoundedCornerShape(8.dp),
-                    content = { Text(text = "Save Task") },
+                        .fillMaxWidth()
+                        .padding(top = space16),
+                    shape = RoundedCornerShape(size = space8),
+                    content = { Text(text = stringResource(resource = Res.string.btn_label_register)) },
                     onClick = onNavigationHome,
                 )
             }
         }
+    }
+}
+
+@Composable
+@Preview
+private fun RegisterScreen() {
+    TaskManagerTheme {
+        RegisterScreen(
+            onNavigationHome = { },
+            onBackNavigate = { }
+        )
     }
 }

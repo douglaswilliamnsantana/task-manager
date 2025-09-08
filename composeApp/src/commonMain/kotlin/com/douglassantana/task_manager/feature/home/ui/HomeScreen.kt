@@ -1,4 +1,4 @@
-package com.douglassantana.task_manager.feature.home
+package com.douglassantana.task_manager.feature.home.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize

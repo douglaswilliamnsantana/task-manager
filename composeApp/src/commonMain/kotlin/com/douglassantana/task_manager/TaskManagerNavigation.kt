@@ -5,10 +5,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.douglassantana.task_manager.feature.home.HomeScreen
-import com.douglassantana.task_manager.feature.register.RegisterScreen
+import com.douglassantana.task_manager.feature.home.navigation.HomeRoute
+import com.douglassantana.task_manager.feature.home.navigation.taskHomeScreen
+import com.douglassantana.task_manager.feature.register.navigation.navigateToTaskRegister
+import com.douglassantana.task_manager.feature.register.navigation.taskRegisterScreen
 
 @Composable
 fun TaskManagerNavigation(
@@ -16,20 +17,15 @@ fun TaskManagerNavigation(
     modifier: Modifier = Modifier,
 ) = NavHost(
     navController = navController,
-    startDestination = "home",
+    startDestination = HomeRoute,
     modifier = modifier.fillMaxSize()
 ) {
-    composable(route = "home") {
-        HomeScreen(
-            onNavigationRegister = {
-                navController.navigate("register")
-            }
-        )
-    }
-    composable(route = "register") {
-        RegisterScreen(
-            onNavigationHome = { navController.popBackStack() },
-            onBackNavigate = { navController.popBackStack() }
-        )
-    }
+    taskHomeScreen(
+        onNavigationRegister = navController::navigateToTaskRegister
+    )
+
+    taskRegisterScreen(
+        onBackNavigate = { navController.popBackStack() },
+        onNavigationHome = { navController.popBackStack() }
+    )
 }

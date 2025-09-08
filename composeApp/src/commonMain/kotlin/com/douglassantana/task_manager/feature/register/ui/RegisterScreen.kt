@@ -1,4 +1,4 @@
-package com.douglassantana.task_manager.feature.register
+package com.douglassantana.task_manager.feature.register.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -18,6 +18,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.douglassantana.task_manager.designsystem.components.header.TaskManagerHeader
 import com.douglassantana.task_manager.designsystem.components.input.TaskManagerInput
 import com.douglassantana.task_manager.designsystem.theme.TaskManagerTheme
@@ -25,6 +26,7 @@ import com.douglassantana.task_manager.designsystem.theme.space16
 import com.douglassantana.task_manager.designsystem.theme.space8
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import org.koin.compose.viewmodel.koinViewModel
 import taskmanager.composeapp.generated.resources.Res
 import taskmanager.composeapp.generated.resources.btn_label_register
 import taskmanager.composeapp.generated.resources.header_title_register
@@ -32,8 +34,31 @@ import taskmanager.composeapp.generated.resources.input_label_register
 import taskmanager.composeapp.generated.resources.input_label_subtitle_register
 
 @Composable
-fun RegisterScreen(
+fun TaskManagerRegisterRoute(
     modifier: Modifier = Modifier,
+    onNavigationHome: () -> Unit,
+    onBackNavigate: () -> Unit,
+) {
+    val viewModel: RegisterViewModel = koinViewModel()
+
+    val uiState = viewModel.uiState.collectAsStateWithLifecycle().value
+
+    RegisterScreen(
+        modifier = modifier,
+        uiState = uiState,
+        onValueChangeTaskName = viewModel::updateTaskName,
+        onValueChangeTaskSubtitle = viewModel::updateTaskSubtitle,
+        onNavigationHome = onNavigationHome,
+        onBackNavigate = onBackNavigate
+    )
+}
+
+@Composable
+private fun RegisterScreen(
+    modifier: Modifier = Modifier,
+    uiState: RegisterUiState,
+    onValueChangeTaskName: (String) -> Unit,
+    onValueChangeTaskSubtitle: (String) -> Unit,
     onNavigationHome: () -> Unit,
     onBackNavigate: () -> Unit,
 ) = Scaffold(
@@ -66,16 +91,16 @@ fun RegisterScreen(
                 TaskManagerInput(
                     modifier = Modifier
                         .padding(top = space16),
-                    value = text.value,
-                    onValueChange = { text.value = it },
+                    value = uiState.taskName,
+                    onValueChange = onValueChangeTaskName,
                     label = stringResource(resource = Res.string.input_label_register)
                 )
 
                 TaskManagerInput(
                     modifier = Modifier
                         .padding(top = space16),
-                    value = text.value,
-                    onValueChange = { text.value = it },
+                    value =uiState.taskSubtitle,
+                    onValueChange = onValueChangeTaskSubtitle,
                     label = stringResource(resource = Res.string.input_label_subtitle_register)
                 )
 
@@ -97,6 +122,9 @@ fun RegisterScreen(
 private fun RegisterScreen() {
     TaskManagerTheme {
         RegisterScreen(
+            uiState = RegisterUiState(),
+            onValueChangeTaskName = { },
+            onValueChangeTaskSubtitle = { },
             onNavigationHome = { },
             onBackNavigate = { }
         )

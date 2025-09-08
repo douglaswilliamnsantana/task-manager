@@ -1,5 +1,4 @@
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
 
 plugins {
@@ -7,10 +6,11 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    kotlin("plugin.serialization")
 }
 
 kotlin {
-    jvmToolchain(21)
+    jvmToolchain(jdkVersion = 21)
 
     androidTarget {
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
@@ -30,12 +30,14 @@ kotlin {
     
     sourceSets {
         all {
-            languageSettings.optIn("kotlinx.cinterop.ExperimentalForeignApi")
+            languageSettings.optIn(annotationName = "kotlinx.cinterop.ExperimentalForeignApi")
         }
 
         androidMain.dependencies {
             implementation(dependencyNotation = compose.preview)
             implementation(dependencyNotation = libs.androidx.activity.compose)
+            implementation(dependencyNotation = libs.koin.android)
+            implementation(dependencyNotation = libs.koin.androidx.compose)
         }
 
         commonMain.dependencies {
@@ -50,6 +52,11 @@ kotlin {
             implementation(dependencyNotation = libs.androidx.lifecycle.runtimeCompose)
             implementation(dependencyNotation = libs.navigation.compose)
             implementation(dependencyNotation = libs.kotlinx.coroutines.core)
+
+            // koin
+            api(dependencyNotation = libs.koin.core)
+            implementation(dependencyNotation = libs.koin.compose)
+            implementation(dependencyNotation = libs.koin.composeVM)
         }
 
         commonTest.dependencies {

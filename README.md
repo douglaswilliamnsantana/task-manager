@@ -26,7 +26,8 @@
 
     task-kmp/ 
         |── composeApp/ # Shared code across platforms |
-        |   └── commonMain/ # Common logic (business rules, models, etc.) │
+        |   └── commonMain/ # Common logic (business rules, models, etc.) |
+                └── di/ # Koin modules for common dependencies
         |   └── iosMain/ # iOS-specific code
         |   └── jvmMain/ # Android/Desktop-specific code
         |── iosApp/ # iOS app entry point (SwiftUI)
@@ -41,9 +42,22 @@
 - [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html)
 - [Jetpack Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform)
 - [SwiftUI](https://developer.apple.com/xcode/swiftui/)
+- [Koin](https://insert-koin.io/) - *A pragmatic lightweight dependency injection framework for Kotlin & Kotlin Multiplatform*
 - Gradle Kotlin DSL
 
 ---
+
+## 💉 Dependency Injection with Koin
+
+This project uses [Koin](https://insert-koin.io/) for managing dependencies across the shared Kotlin Multiplatform codebase and for platform-specific injections.
+
+### Key aspects:
+
+- **Shared Modules:** Koin modules are defined in `commonMain` to provide dependencies like ViewModels, Repositories, UseCases, etc., that are common to both Android and iOS.
+- **Platform-Specific Modules:** Platform-specific dependencies (e.g., platform services, database drivers) can be defined in `androidMain` (or `jvmMain`) and `iosMain` and then included in the main Koin graph.
+- **Starting Koin:**
+    - **Android:** Koin is typically initialized in the `Application` class.
+    - **iOS:** Koin is initialized early in the app lifecycle, often in the `AppDelegate` or a dedicated initializer, making dependencies available to SwiftUI views.
 
 ## 🧪 How to run
 

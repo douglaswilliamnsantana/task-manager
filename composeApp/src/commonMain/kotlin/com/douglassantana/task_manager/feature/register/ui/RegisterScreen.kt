@@ -18,6 +18,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.douglassantana.task_manager.designsystem.components.header.TaskManagerHeader
 import com.douglassantana.task_manager.designsystem.components.input.TaskManagerInput
@@ -25,7 +26,6 @@ import com.douglassantana.task_manager.designsystem.theme.TaskManagerTheme
 import com.douglassantana.task_manager.designsystem.theme.space16
 import com.douglassantana.task_manager.designsystem.theme.space8
 import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.viewmodel.koinViewModel
 import taskmanager.composeapp.generated.resources.Res
 import taskmanager.composeapp.generated.resources.btn_label_register

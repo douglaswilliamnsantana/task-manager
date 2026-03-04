@@ -41,13 +41,13 @@ kotlin {
         }
 
         commonMain.dependencies {
-            implementation(dependencyNotation = compose.runtime)
-            implementation(dependencyNotation = compose.foundation)
-            implementation(dependencyNotation = compose.material3)
-            implementation(dependencyNotation = compose.materialIconsExtended)
-            implementation(dependencyNotation = compose.ui)
-            implementation(dependencyNotation = compose.components.resources)
-            implementation(dependencyNotation = compose.components.uiToolingPreview)
+            implementation(dependencyNotation = libs.compose.runtime)
+            implementation(dependencyNotation = libs.compose.foundation)
+            implementation(dependencyNotation = libs.compose.material3)
+            implementation(dependencyNotation = libs.material.icons)
+            implementation(dependencyNotation = libs.compose.ui)
+            implementation(dependencyNotation = libs.components.resources)
+            implementation(dependencyNotation = libs.compose.preview)
             implementation(dependencyNotation = libs.androidx.lifecycle.viewmodelCompose)
             implementation(dependencyNotation = libs.androidx.lifecycle.runtimeCompose)
             implementation(dependencyNotation = libs.navigation.compose)
@@ -63,19 +63,23 @@ kotlin {
             implementation(dependencyNotation = kotlin(simpleModuleName = "test"))
 
             @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
-            implementation(dependencyNotation = compose.uiTest)
+            implementation(dependencyNotation = libs.ui.test)
         }
     }
 }
 
 android {
     namespace = "com.douglassantana.task_manager"
-    compileSdk = libs.versions.android.compileSdk.get().toInt()
+    compileSdk {
+        version = release(36) {
+            minorApiLevel = 1
+        }
+    }
 
     defaultConfig {
         applicationId = "com.douglassantana.task_manager"
-        minSdk = libs.versions.android.minSdk.get().toInt()
-        targetSdk = libs.versions.android.targetSdk.get().toInt()
+        minSdk = 31
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
@@ -113,6 +117,5 @@ android {
 }
 
 dependencies {
-    debugImplementation(compose.uiTooling)
+    debugImplementation(libs.ui.tooling)
 }
-
